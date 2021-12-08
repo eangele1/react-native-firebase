@@ -23,16 +23,16 @@ const styles = StyleSheet.create({
 
   gameChoiceContainer: {
     width: 400,
-    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     marginBottom: 40,
   },
 
   gameChoiceButton: {
     width: 100,
     height: 50,
-    backgroundColor: "#5c6bc0",
+    backgroundColor: "#99173c",
     borderRadius: 50,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,

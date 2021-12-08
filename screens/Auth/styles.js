@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#2e2633",
   },
 
   input: {
@@ -15,11 +16,11 @@ const styles = StyleSheet.create({
     margin: 12,
     padding: 5,
     fontSize: 20,
-    borderRadius: 3,
+    borderRadius: 10,
+    backgroundColor: "white",
   },
 
   buttonGroup: {
-    display: "flex",
     height: 50,
     width: 300,
     flexDirection: "row",
@@ -30,14 +31,14 @@ const styles = StyleSheet.create({
   submitButton: {
     width: 100,
     height: 50,
-    backgroundColor: "#42a5f5",
+    backgroundColor: "#dce9be",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 3,
   },
 
   submitButtonText: {
-    color: "white",
+    color: "black",
   },
 
   loading: {

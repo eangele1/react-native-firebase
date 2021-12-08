@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 import { Keyboard } from "react-native";
 
 export const AuthContext = React.createContext();
@@ -31,7 +32,15 @@ export const AuthProvider = (props) => {
     switch (action) {
       case "REGISTER":
         createUserWithEmailAndPassword(auth, payload.email, payload.password)
-          .then((res) => setLoading(false))
+          .then((data) => {
+            const db = getDatabase();
+            const reference = ref(db, "profiles/" + data.user.uid);
+            set(reference, {
+              firstName: payload.firstName,
+              bio: "Edit me!",
+            });
+            setLoading(false);
+          })
           .catch((err) => setLoading(false));
         break;
       case "LOGIN":

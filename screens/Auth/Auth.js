@@ -25,16 +25,8 @@ const Auth = (props) => {
 
   useEffect(() => {
     if (userID !== "") {
-      setFirstName("");
-      setPasswordCheck("");
-      setEmail("");
-      setPassword("");
-      props.navigation.navigate("Home");
-    } else {
-      setAuthScreen("Login");
-      props.navigation.navigate("Auth");
+      props.navigation.replace("Home");
     }
-
     return () => {};
   }, [userID]);
 
@@ -85,9 +77,9 @@ const Auth = (props) => {
             setAuthScreen(authScreen === "Register" ? "Login" : "Register");
           }}
         >
-          <Text>
+          <Text style={{ color: "white" }}>
             or{" "}
-            <Text style={{ color: "blue" }}>
+            <Text style={{ color: "#dce9be" }}>
               {authScreen === "Register" ? "Login" : "Register"}
             </Text>
           </Text>
@@ -106,6 +98,7 @@ const Auth = (props) => {
               ? () => {
                   if (passwordCheck === password) {
                     dispatchUserEvent("REGISTER", {
+                      firstName: firstName,
                       email: email,
                       password: password,
                     });

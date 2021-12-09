@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   ActivityIndicator,
   Alert,
+  Image,
 } from "react-native";
 import styles from "./styles";
 
@@ -45,6 +46,15 @@ const Auth = (props) => {
           onChangeText={setFirstName}
           value={firstName}
           style={styles.input}
+        />
+      ) : (
+        <></>
+      )}
+      {authScreen === "Login" ? (
+        <Image
+          resizeMode={"contain"}
+          source={require("../../assets/logo.png")}
+          style={{ width: 200, height: 200 }}
         />
       ) : (
         <></>

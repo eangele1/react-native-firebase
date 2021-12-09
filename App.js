@@ -9,8 +9,9 @@ import Auth from "./screens/Auth/Auth";
 import Profile from "./screens/Profile/Profile";
 
 import { StatusBar } from "expo-status-bar";
-import { TouchableOpacity, View, Dimensions } from "react-native";
+import { TouchableOpacity, View, Dimensions, Image, Text } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import NewPost from "./screens/NewPost/NewPost";
 
 const { width } = Dimensions.get("window");
 
@@ -30,11 +31,30 @@ export default function App() {
           <Stack.Screen
             name="Home"
             options={({ navigation }) => ({
-              title: "RN-Firebase",
               headerTintColor: "#fff",
               headerStyle: {
                 backgroundColor: "#2e2633",
               },
+              title: "",
+              headerTitle: "",
+              headerLeft: () => (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    width: width * 0.375,
+                  }}
+                >
+                  <Image
+                    resizeMode={"contain"}
+                    source={require("./assets/logo.png")}
+                    style={{ width: 50, height: 50 }}
+                  />
+                  <Text style={{ color: "white", fontSize: 23 }}>
+                    RN-Firebase
+                  </Text>
+                </View>
+              ),
               headerRight: () => (
                 <View
                   style={{
@@ -43,7 +63,9 @@ export default function App() {
                     width: width * 0.25,
                   }}
                 >
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("NewPost")}
+                  >
                     <MaterialIcons name="post-add" size={30} color="white" />
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -59,6 +81,17 @@ export default function App() {
               ),
             })}
             component={Home}
+          />
+          <Stack.Screen
+            name="NewPost"
+            options={{
+              title: "New Post",
+              headerTintColor: "#fff",
+              headerStyle: {
+                backgroundColor: "#2e2633",
+              },
+            }}
+            component={NewPost}
           />
           <Stack.Screen
             name="Profile"

@@ -10,41 +10,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#efffcd",
   },
 
-  postItem: {
-    backgroundColor: "white",
-    margin: 10,
-    padding: 10,
+  input: {
     borderRadius: 10,
-    elevation: 3,
-  },
-
-  postListContainer: {
+    borderWidth: 1,
+    height: 40,
+    margin: 12,
+    padding: 10,
+    backgroundColor: "white",
     width: width * 0.8,
-  },
-
-  gameChoiceContainer: {
-    width: 400,
-    alignItems: "center",
-    marginBottom: 40,
-  },
-
-  gameChoiceButton: {
-    width: 100,
-    height: 50,
-    backgroundColor: "#5c6bc0",
-    borderRadius: 50,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-
-  buttonText: {
-    color: "white",
-  },
-
-  outcomeText: {
-    fontSize: 20,
   },
 
   loading: {

@@ -1,21 +1,48 @@
-import React, { useContext } from "react";
-import { View, ActivityIndicator } from "react-native";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useState, useEffect } from "react";
+import { View, Text, FlatList } from "react-native";
+import { getDatabase, ref, onValue } from "firebase/database";
 import styles from "./styles";
 
-const Home = (props) => {
-  //const [posts, setPosts] = useState([]);
-  const { userID, auth, loading, setLoading } = useContext(AuthContext);
+const Home = () => {
+  const [posts, setPosts] = useState(null);
+
+  const db = getDatabase();
+  const postListRef = ref(db, "posts/");
+
+  useEffect(() => {
+    onValue(postListRef, (snapshot) => {
+      if (snapshot.val() !== null) {
+        const data = snapshot.val();
+        let result = Object.keys(data).map((key) => data[key]);
+
+        setPosts(result);
+      } else {
+        setPosts([]);
+      }
+    });
+  }, []);
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.postItem}>
+        <Text>{item.name}</Text>
+        <Text style={{ padding: 10 }}>{item.message}</Text>
+        <View style={{ alignItems: "flex-end" }}>
+          <Text>{item.time}</Text>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
-      {loading ? (
-        <View style={styles.loading}>
-          <ActivityIndicator animating={true} size="large" color="#FFF" />
-        </View>
-      ) : (
-        <></>
-      )}
+      <View style={styles.postListContainer}>
+        <FlatList
+          data={posts}
+          renderItem={renderItem}
+          keyExtractor={(item) => posts.indexOf(item)}
+        />
+      </View>
     </View>
   );
 };

@@ -24,7 +24,7 @@ const NewPost = (props) => {
 
   //retrieves first name of user from database once
   useEffect(() => {
-    onValue(
+    return onValue(
       userRef,
       (snapshot) => {
         if (snapshot.val() !== null) {
@@ -35,7 +35,6 @@ const NewPost = (props) => {
       },
       { onlyOnce: true }
     );
-    return () => {};
   }, []);
 
   function formatAMPM(date) {

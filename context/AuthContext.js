@@ -24,6 +24,7 @@ export const AuthProvider = (props) => {
         setUserID("");
       }
     });
+    return () => {};
   }, []);
 
   const dispatchUserEvent = (action, payload) => {

@@ -10,7 +10,7 @@ const Home = () => {
   const postListRef = ref(db, "posts/");
 
   useEffect(() => {
-    onValue(postListRef, (snapshot) => {
+    return onValue(postListRef, (snapshot) => {
       if (snapshot.val() !== null) {
         const data = snapshot.val();
         let result = Object.keys(data).map((key) => data[key]);

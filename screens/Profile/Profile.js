@@ -23,7 +23,7 @@ const Profile = (props) => {
 
   //retrieves data from database
   useEffect(() => {
-    onValue(reference, (snapshot) => {
+    return onValue(reference, (snapshot) => {
       if (snapshot.val() !== null) {
         setFirstName(snapshot.val().firstName);
         setBio(snapshot.val().bio);
@@ -32,7 +32,6 @@ const Profile = (props) => {
         setBio("");
       }
     });
-    return () => {};
   }, []);
 
   //checks on userID and executes when it changes
